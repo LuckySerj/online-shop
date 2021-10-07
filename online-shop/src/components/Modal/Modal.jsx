@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Button from '../Button/Button'
+import PropTypes from "prop-types"
 
 class Modal extends Component {
     handleClick =()=> {
@@ -30,4 +31,25 @@ class Modal extends Component {
     }
 }
  
+Modal.propTypes = {
+    header: PropTypes.string,
+    bgHeader: PropTypes.string,
+    closeBtn: PropTypes.string,
+    isCloseBtn: PropTypes.bool.isRequired,
+    text: PropTypes.string,
+    textColor: PropTypes.string,
+    bgBody: PropTypes.string,
+
+}
+
+Modal.defaultProps = {
+    header: "",
+    bgHeader: "transparent",
+    closeBtn: "btn-close",
+    isCloseBtn: true,
+    text: "",
+    textColor: "#000",
+    bgBody: "transparent",
+}
+
 export default Modal;
