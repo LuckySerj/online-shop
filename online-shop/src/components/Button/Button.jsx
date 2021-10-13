@@ -8,27 +8,29 @@ class Button extends React.Component {
         }
     }
     render() { 
-        const {text, className, bgColor} = this.props
+        const {text, className, bgColor, textColor, type} = this.props
         return (<button 
         className = {className} 
         onClick = {this.handleClick} 
-        style={{backgroundColor: bgColor}}>{text}
+        style={{backgroundColor: bgColor, color: textColor}}
+        type = {type}
+        >{text}
         </button>)
         
     }
 }
  
 Button.propTypes = {
-    text: PropTypes.string,
     className: PropTypes.string.isRequired,
-    bgColor: PropTypes.string
+    bgColor: PropTypes.string,
+    type: PropTypes.string
 
 }
 
 Button.defaultProps = {
-    text: '',
     className: 'btn',
     bgColor: '',
+    type: 'button'
 }
 
 

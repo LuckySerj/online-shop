@@ -1,100 +1,119 @@
 import React, { Component } from 'react';
 import Button from './components/Button/Button'
 import Modal from './components/Modal/Modal'
+import Error from './components/Error/Error'
+import ProductList from './components/ProductList/ProductList'
 import "bootstrap/scss/bootstrap.scss"
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      isFirstModalOpen: false,
-      isSecondModalOpen: false
+ state = { 
+  isModalOpen: false,
+  items: [],
+  error: null,
+  favourites: [],
+  selectedToCartItemId: null,
+  itemsIsInCart: [],
      }
-  }
+  
+     componentDidMount = async () => {
+      try {
+        const response = await fetch('/products.json')
+        const data = await response.json()
+        this.setState({ items: data })
+        this.setItemsInCart()
+        this.setFavouriteItems()
+      } catch (error) {
+        this.setState({ error })
+      }
+    }
 
-  firstModalOpen = () => {
-    this.setState({ isFirstModalOpen: true})
-  };
+    setItemsInCart = () => {
+      if (localStorage.getItem('inCart')) {
+        const itemsIsInCartLS = JSON.parse(localStorage.getItem('inCart'))
+        this.setState({ itemsIsInCart: itemsIsInCartLS })
+      }
+    }
 
-  secondModalOpen = () => {
-    this.setState({ isSecondModalOpen: true})
-  }
+    setFavouriteItems = () => {
+      if (localStorage.getItem('favourites')) {
+        const favouritesLS = JSON.parse(localStorage.getItem('favourites'))
+        this.setState({ favourites: favouritesLS })
+      }
+    }
 
-  firstModalClose = () => {
-    this.setState({ isFirstModalOpen: false})
-  };
+    onOpenBtnClick = (id) => {
+      this.setState({ selectedToCartItemId: id })
+      this.setState({ isModalOpen: true })
+    }
 
-  secondModalClose = () => {
-    this.setState({ isSecondModalOpen: false})
+    onCheckBtnClick = (id) => {
+      const newFavouritesArr = [...this.state.favourites]
+      newFavouritesArr.includes(id)
+        ? newFavouritesArr.splice(newFavouritesArr.indexOf(id), 1)
+        : newFavouritesArr.push(id)
+      this.setState({ favourites: newFavouritesArr })
+      localStorage.setItem('favourites', JSON.stringify(newFavouritesArr))
+    }
+
+    onCartBtnClick = () => {
+      const newItemsInCartArr = [...this.state.itemsIsInCart]
+      const { selectedToCartItemId } = this.state
+      newItemsInCartArr.push(selectedToCartItemId)
+      const uniqueCartItems = [...new Set(newItemsInCartArr)];
+      this.setState({ itemsIsInCart: uniqueCartItems })
+      localStorage.setItem('inCart', JSON.stringify(uniqueCartItems))
+      this.modalClose()
+    }
+
+
+  modalClose = () => {
+    this.setState({ isModalOpen: false})
   };
 
   render() { 
-    const {isFirstModalOpen, isSecondModalOpen} = this.state
+    const { isModalOpen, items, error, favourites } = this.state
     return ( 
      
-      <div>
-      <header className="container d-flex justify-content-center mt-5">
-      <Button text = "Open first modal"
-      className="btn btn-primary me-3"
-      onClick={this.firstModalOpen}/>
-      <Button text = "Open second modal" 
-      className="btn btn-info ms-3" 
-      onClick={this.secondModalOpen}/>
-      </header>
-      
-      
-      {  isFirstModalOpen && <Modal header = "Do you want to delete this file?" 
-      closeBtn = "btn-close btn-close-white" 
-      isCloseBtn = {true} 
-      text = "Once you delete this file, it won`t be possible to undo this action. Are you sure you want delete it?"
-      textColor = "#fff"
-      onClick = {this.firstModalClose}
-      bgHeader = "#d44637"
-      bgBody = "#e74c3c"
-      actions={
-         <>
+      <>
+           {error
+          ? <Error />
+          : <ProductList products={items}
+           favouritesProducts ={favourites}
+            onClick={this.onOpenBtnClick}
+            onCheckBtnClick={this.onCheckBtnClick} />
+        }
 
-         <Button 
-         text="Ok" 
-         bgColor="#b3382c" 
-         className="btn btn-danger"/>
-        
-         <Button 
-         text="Cancel" 
-         bgColor="#b3382c" 
-         onClick={this.firstModalClose} 
-         className="btn btn-danger"/>
+        {isModalOpen && <Modal
+          closeBtn = "btn-close btn-close-white" 
+          isCloseBtn = {true} 
+          header="Do you want to add the product to cart?"
+          headerTextColor = "#fff"
+          bgHeader = "#fb4509"
+          text="This product will be saved in your cart"
+         
+          actions={
+          <>
+            <Button
+              text="Add"
+              bgColor="#ff7c12"
+              onClick={this.onCartBtnClick}
+              textColor="#fff"
+              type="button"
+            />
+            <Button 
+              text="Cancel" 
+              bgColor="#ff7c12" 
+              onClick={this.modalClose} 
+              textColor="#fff"
+              type="button"
+             />
          </>
-       }
-       onClick={this.firstModalClose}
-      />}
 
-      {  isSecondModalOpen && <Modal header = "Do you want to add new file?" 
-      closeBtn = "btn-close btn-close-white" 
-      isCloseBtn = {true} 
-      text = "After adding the file you can delete it . Are you sure you want add it?"
-      textColor = "#fff"
-      onClick = {this.secondModalClose}
-      bgHeader = "	#228B22"
-      bgBody = "#3CB371"
-      actions={
-         <>
-         <Button 
-         text="Ok" 
-         bgColor="#006400" 
-         className="btn btn-success"/>
-        
-         <Button 
-         text="Cancel" 
-         bgColor="#006400" 
-         onClick={this.secondModalClose} 
-         className="btn btn-success"/>
-         </>
-       }
-       onClick={this.secondModalClose}
-      />}
+          }
+          onClick={this.modalClose} />
+        }
+      </>
 
-</div>
      );
   }
 }

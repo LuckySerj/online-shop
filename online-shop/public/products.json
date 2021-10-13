@@ -1,0 +1,12 @@
+[
+    { "id": "049317", "name": "Apple iPhone 13 Pro 256GB", "price": "39 146", "url": "https://www.mrfix.ua/media/product/18682df74/apple-iphone-13-pro-256gb-sierra-blue.webp", "item":"049317", "color":"Sierra Blue"  },
+    { "id": "049172", "name": "Apple iPhone 13 Pro Max 512GB", "price": "58 190","url": "https://www.mrfix.ua/media/product/18576e0ab/apple-iphone-13-pro-max-512gb-graphite.webp", "item":"049172", "color":"Graphite"},
+    { "id": "046065", "name": "Apple iPhone 12 Pro 256GB", "price": "32 110", "url": "https://www.mrfix.ua/media/product/166300443/apple-iphone-12-pro-256gb-gold.webp","item":"046065", "color":"Gold" },
+    { "id": "046063", "name": "Apple iPhone 12 64GB", "price": "22 747",  "url": "https://www.mrfix.ua/media/product/16615cc39/apple-iphone-12-64gb-green.webp", "item": "046063", "color":"Green" },
+    { "id": "047612", "name": "Apple MacBook Pro 13\"", "price": "93 104", "url": "https://www.mrfix.ua/media/product/17434c9f2/apple-macbook-pro-13-space-gray-2020-z0y700018.webp", "item":"047612", "color":"Space Gray"},
+    { "id": "047211", "name": "Apple MacBook Air M1 13\"", "price": "35 179","url": "https://www.mrfix.ua/media/product/172262286/apple-macbook-air-m1-13-silver-late-2020-mgna3.webp", "item":"047211", "color":"Silver"},
+    { "id": "047580", "name": "Apple Watch Series 6 GPS", "price": "21 689", "url": "https://www.mrfix.ua/media/product/17428afbd/apple-watch-series-6-gps-cellular-40mm-gold-stainless-steel-case-with-cyprus-green-sport-band-m02w3-m06v3.webp","item":"047580", "color":"Gold" },
+    { "id": "048077", "name": "Apple iPad Pro 12.9 (2021) M1", "price": "44 172",  "url": "https://www.mrfix.ua/media/product/17726881b/apple-ipad-pro-12-9-2021-m1-wi-fi-cellular-512gb-silver-mhr93-mhp03.webp", "item": "048077", "color":"Silver" },
+    { "id": "049282", "name": "Apple iPad mini 6", "price": "26 450",  "url": "https://www.mrfix.ua/media/product/186489cde/apple-ipad-mini-6-wi-fi-256gb-purple-mk7x3.webp", "item": "049282", "color":"Purple" },   
+    { "id": "047398", "name": "Apple AirPods Max", "price": "13 490",  "url": "https://www.mrfix.ua/media/product/17343d1bc/apple-airpods-max-sky-blue-mgyl3.webp", "item": "047398", "color":"Sky Blue" }
+]
