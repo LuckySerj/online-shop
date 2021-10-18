@@ -1,0 +1,22 @@
+.nav__list{
+    display: flex;
+    list-style: none;
+    background-color: #fb4509;
+    margin-bottom: 0;
+
+}
+
+.nav__item {
+    margin-left: 30px;
+    
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #fff;
+ 
+    &--active {
+        color: #fff;
+        text-decoration: underline;
+    }
+}
