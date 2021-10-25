@@ -13,7 +13,7 @@ const ProductCard = (props) => {
           <div className = 'col'>
             {status === "inCart" 
             ? <Button 
-            className="buy-btn btn-close"  
+            className="buy-btn btn-close "  
             onClick = {() => removeFromCartBtnClick(id)} 
             bgColor="#fb4509"
 
