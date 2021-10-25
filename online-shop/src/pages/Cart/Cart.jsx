@@ -1,45 +1,70 @@
-import ProductCard from '../../components/ProductCard/ProductCard';
-import PropTypes from 'prop-types';
+import { useSelector } from "react-redux";
 
-const Cart = (props) => {
-    const { items, itemsIsInCart, favorites, onCheckBtnClick, removeFromCartBtnClick } = props
-    const itemsInCart = items.filter(product => itemsIsInCart.includes(product.id));
+import ProductCard from "../../components/ProductCard/ProductCard";
+import PropTypes from "prop-types";
+import {
+  getGoods,
+  isInCart,
+  isModalOpen,
+} from "../../store/store-components/selectors";
+import Modal from "../../components/Modal/Modal";
+import Button from "../../components/Button/Button";
 
-    return (
-        (itemsInCart.length > 0)
-            ? <>
-                <ul className="grid product-list p-0">
-                    {itemsInCart.map(item => {
-                        return (
-                            <ProductCard key={item.id}
-                                product={item}
-                                onCheckBtnClick={onCheckBtnClick}
-                                favorites={favorites}
-                                itemsIsInCart={itemsIsInCart}
-                                removeFromCartBtnClick={removeFromCartBtnClick}
-                                status="inCart"
-                            />
-                        )
-                    })}
-                </ul>
+const Cart = ({ onRemoveClick, onConfirmRemoveClick }) => {
+  const inCart = useSelector(isInCart);
+  const products = useSelector(getGoods);
+  const modalOpen = useSelector(isModalOpen);
+  const itemsInCart = products.filter((product) => inCart.includes(product.id));
+
+  return (
+    <>
+      {itemsInCart.length ? (
+        <>
+          <ul className="grid product-list p-0">
+            {itemsInCart.map((item) => {
+              return (
+                <ProductCard
+                  key={item.id}
+                  product={item}
+                  onRemoveClick={onRemoveClick}
+                  status="inCart"
+                />
+              );
+            })}
+          </ul>
+        </>
+      ) : (
+        <p className="ms-5">Your cart is empty</p>
+      )}
+      {modalOpen && (
+        <Modal
+          header="Do you want to remove the product from cart?"
+          text="This product will be removed from your cart"
+          actions={
+            <>
+              <Button
+                text="Ok"
+                bgColor="#ff7c12"
+                onClick={onConfirmRemoveClick}
+                textColor="#fff"
+                type="button"
+              />
             </>
-            : <p className = 'ms-5'>Your cart is empty</p>
-    )
-}
+          }
+        />
+      )}
+    </>
+  );
+};
 
 Cart.propTypes = {
-    items: PropTypes.array.isRequired,
-    onCheckBtnClick: PropTypes.func,
-    removeFromCartBtnClick: PropTypes.func,
-    favorites: PropTypes.array,
-    itemsIsInCart: PropTypes.array
-}
+  onRemoveClick: PropTypes.func,
+  onConfirmRemoveClick: PropTypes.func,
+};
 
 Cart.defaultProps = {
-    onCheckBtnClick: () => { },
-    removeFromCartBtnClick: () => { },
-    favorites: [],
-    itemsIsInCart: []
-}
+  onRemoveClick: () => {},
+  onConfirmRemoveClick: () => {},
+};
 
-export default Cart
+export default Cart;

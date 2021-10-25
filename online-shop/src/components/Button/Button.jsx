@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
-const Button = (props) => {
-  const { text, className, bgColor, textColor, type, onClick } = props;
+const Button = ({ text, className, bgColor, textColor, type, onClick }) => {
   return (
     <button
       className={className}

@@ -1,7 +1,28 @@
 .window-modal {
-    position: fixed!important;
-    left: 50%;
-    top: 40%;
-    transform: translate(-50%,-50%);
-    z-index: 1051;
+  position: fixed !important;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  z-index: 1051;
+}
+
+.modal-content {
+  z-index: 1051;
+}
+
+.modal-header {
+  border: none;
+  background-color: #fb4509;
+}
+
+.modal-title {
+  color: #fff;
+}
+.modal-footer {
+  border: none !important;
+  justify-content: center !important;
+}
+
+.modal-backdrop {
+  opacity: 0.5;
 }
