@@ -4,6 +4,7 @@ import {
   SET_FAVORITES,
   SET_IN_CART,
   SET_MODAL_OPEN,
+  CLEAR_CART,
 } from "./types";
 
 export const setProducts = (data) => {
@@ -24,4 +25,8 @@ export const setInCart = (data) => {
 
 export const setModalOpen = (boolean) => {
   return { type: SET_MODAL_OPEN, payload: boolean };
+};
+
+export const clearCart = () => {
+  return { type: CLEAR_CART, payload: [] };
 };

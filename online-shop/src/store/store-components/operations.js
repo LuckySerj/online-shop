@@ -1,5 +1,6 @@
 import getProducts from "../../api/api";
 import {
+  clearCart,
   setError,
   setFavorites,
   setInCart,
@@ -47,4 +48,9 @@ export const removeFromCart = (products) => (dispatch) => {
   dispatch(setInCart(products));
   dispatch(setModalOpen(false));
   localStorage.setItem("inCart", JSON.stringify(products));
+};
+
+export const clearCartThunk = () => (dispatch) => {
+  localStorage.removeItem("inCart");
+  dispatch(clearCart());
 };

@@ -6,7 +6,6 @@ import Cart from "./pages/Cart/Cart";
 import Favor from "./pages/Favor/Favor";
 import NotFound from "./pages/errors/NotFound";
 import ProductList from "./components/ProductList/ProductList";
-import getProducts from "./api/api";
 import "bootstrap/scss/bootstrap.scss";
 import { setModalOpen } from "./store/store-components/actions";
 import { isInCart } from "./store/store-components/selectors";

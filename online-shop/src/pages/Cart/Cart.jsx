@@ -9,6 +9,7 @@ import {
 } from "../../store/store-components/selectors";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
+import OrderForm from "../../components/OrderForm/OrderForm";
 
 const Cart = ({ onRemoveClick, onConfirmRemoveClick }) => {
   const inCart = useSelector(isInCart);
@@ -32,6 +33,7 @@ const Cart = ({ onRemoveClick, onConfirmRemoveClick }) => {
               );
             })}
           </ul>
+          <OrderForm itemsInCart={itemsInCart} />
         </>
       ) : (
         <p className="ms-5">Your cart is empty</p>

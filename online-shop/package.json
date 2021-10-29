@@ -18,7 +18,13 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "sass": "^1.42.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "@emotion/react": "^11.5.0",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.6",
+    "formik": "^2.2.9",
+    "react-number-format": "^4.7.3",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
