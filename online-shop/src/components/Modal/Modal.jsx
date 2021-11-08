@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import PropTypes from "prop-types";
 import "./Modal.scss";
-import { setModalOpen } from "../../store/store-components/actions";
+import { setModalOpen } from "../../store/products/actions";
 
 const Modal = ({ header, text, actions }) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const Modal = ({ header, text, actions }) => {
   };
   return (
     <>
-      <div className="modal-dialog window-modal">
+      <div className="modal-dialog window-modal" data-testid="modal-backdrop">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">{header}</h5>

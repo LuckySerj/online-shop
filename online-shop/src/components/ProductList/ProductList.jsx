@@ -3,11 +3,7 @@ import { useSelector } from "react-redux";
 import ProductCard from "../ProductCard/ProductCard";
 import "./ProductList.scss";
 import PropTypes from "prop-types";
-import {
-  getGoods,
-  isError,
-  isModalOpen,
-} from "../../store/store-components/selectors";
+import { getGoods, isError, isModalOpen } from "../../store/products/selectors";
 import Error from "../Error/Error";
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";

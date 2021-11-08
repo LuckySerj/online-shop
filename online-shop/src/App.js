@@ -7,15 +7,15 @@ import Favor from "./pages/Favor/Favor";
 import NotFound from "./pages/errors/NotFound";
 import ProductList from "./components/ProductList/ProductList";
 import "bootstrap/scss/bootstrap.scss";
-import { setModalOpen } from "./store/store-components/actions";
-import { isInCart } from "./store/store-components/selectors";
+import { setModalOpen } from "./store/products/actions";
+import { isInCart } from "./store/products/selectors";
 import {
   getProductsThunk,
   getFavorites,
   getInCart,
   removeFromCart,
   setInCartThunk,
-} from "./store/store-components/operations";
+} from "./store/products/operations";
 
 const App = () => {
   const dispatch = useDispatch();

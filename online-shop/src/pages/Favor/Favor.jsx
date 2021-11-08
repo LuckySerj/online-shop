@@ -5,7 +5,7 @@ import {
   getGoods,
   isFavorite,
   isModalOpen,
-} from "../../store/store-components/selectors";
+} from "../../store/products/selectors";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
 

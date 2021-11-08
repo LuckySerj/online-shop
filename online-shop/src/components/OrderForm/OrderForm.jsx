@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import { TextField, Typography, Button } from "@mui/material";
 import NumberFormat from "react-number-format";
-import { clearCartThunk } from "../../store/store-components/operations";
+import { clearCartThunk } from "../../store/products/operations";
 import { formTypes } from "./OrderFormTypes";
 import { orderFormValidation } from "./OrderFormValidation";
 import "./OrderForm.scss";

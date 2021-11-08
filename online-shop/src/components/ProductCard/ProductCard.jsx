@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import "./ProductCard.scss";
 import PropTypes from "prop-types";
-import { isFavorite } from "../../store/store-components/selectors";
-import { setFavoritesThunk } from "../../store/store-components/operations";
+import { isFavorite } from "../../store/products/selectors";
+import { setFavoritesThunk } from "../../store/products/operations";
 
 const ProductCard = ({ product, onAddClick, onRemoveClick, status }) => {
   const { name, item, color, price, url, id } = product;

@@ -6,7 +6,7 @@ import {
   getGoods,
   isInCart,
   isModalOpen,
-} from "../../store/store-components/selectors";
+} from "../../store/products/selectors";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
 import OrderForm from "../../components/OrderForm/OrderForm";
